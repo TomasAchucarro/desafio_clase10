@@ -1,0 +1,39 @@
+<h2>Lista de productos en tiempo real</h2>
+<div>
+  <form>
+    <h3>Ingrese un producto</h3>
+    <label for="title">Título:
+      <input type="text" name="title" id="inputTitle" /></label>
+    <label for="description">Descripción:
+      <input type="text" name="description" id="inputDescription" /></label>
+    <label for="price">Precio:
+      <input type="number" name="price" id="inputPrice" /></label>
+    <label for="code">Código:
+      <input type="number" name="code" id="inputCode" /></label>
+    <label for="stock">Stock:
+      <input type="number" name="stock" id="inputStock" /></label>
+    <label for="category">Categoría:
+      <input type="text" name="category" id="inputCategory" /></label>
+    <button id="createProduct">Crear Producto</button>
+  </form>
+
+  <div id="realTimeProducts">
+    {{#each products}}
+      <div>
+        <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+        <p>{{this.id}}</p>
+        <div>
+          <h1>{{this.title}}</h1>
+          <p><b>Descripción:</b> {{this.description}}</p>
+          <p><b>Código:</b> {{this.code}}</p>
+          <p><b>Stock:</b> {{this.stock}}</p>
+          <p><b>Precio:</b> {{this.price}}</p>
+          <p><b>Categoria:</b> {{this.category}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
